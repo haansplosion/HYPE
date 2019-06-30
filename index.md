@@ -4,6 +4,8 @@ Never sure what to watch on Netflix? HYPE is a curated list of all the latest TV
 
 You can view our [Privacy policy](privacypolicy.md) here.
 
+## Need support? Send us an email below
+
 <form name="gform" id="gform" enctype="text/plain" action="https://docs.google.com/forms/d/e/1FAIpQLSep4tR6QUlDoH4n-dG1ndGNjouYWC6lKMcYxlDN_7-N94LZlA/formResponse?" target="hidden_iframe" onsubmit="submitted=true;">
   Name:<br>
   <input type="text" name="entry.2005620554" id="entry.2005620554"><br>
