@@ -1,0 +1,635 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<!--
+DIRECTION CONTRACT — HYPE marketing site, V2 (Persuade)
+
+THESIS: The page IS the feed. HYPE's screen is a ribbon of full-bleed cells cut by ~18°
+diagonal seams; the site reproduces that ribbon at page scale instead of the category
+default — floating rotated phone mockups on a neutral two-column grid.
+
+OWN-WORLD: Near-black ground (#08080B) with raised graphite bands, one crimson (#F1304A /
+#8A0016) used only as light: the bolt mark, the rake along each seam, the active chapter.
+Avenir Next Heavy set very large at sub-1.0 leading (the app's TightTitle, 0.82). Cells are
+interlocking trapezoids from FeedCellMetrics (overlap 0.3), never rounded cards. No gradient
+text, no glass, no eyebrow over every section.
+
+STORY: This tracks four kinds of release in one date-ordered list, tells you if it's good and
+where to get it, and pings you on drop day. It's free, private, iPhone. Get it on the App Store.
+
+FIRST VIEWPORT: Full-bleed band cut on its bottom-left. Left column: four media pills, then the
+headline at 38–70px — first clause in Bold/dim,"in one feed." in Heavy/paper — lede,
+white App Store pill, ghost secondary, trust line. Right column: an oversized crimson bolt as
+the light source, the Upcoming screen in a bare iPhone body bleeding past the right edge.
+
+FORM: Brief-pinned (app's own visual world); no concept roll. Signature motion: a single
+crimson rake travelling each diagonal seam once as it enters view.
+-->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HYPE — Privacy policy</title>
+<meta name="description" content="HYPE tracks upcoming and just-released movies, TV, music and games in one date-ordered feed, with critic scores, where to get it, and an alert the day it drops. Free on iPhone.">
+<meta name="theme-color" content="#08080B">
+<meta name="color-scheme" content="dark">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mulish:wght@500;600;700;800&display=swap">
+<style>
+/* ═══════════════════════ tokens ═══════════════════════ */
+:root{
+  /* palette — sampled from the app icon; nothing invented */
+  --ink:#08080B;         /* ground */
+  --band:#101016;        /* raised band */
+  --panel:#121218;       /* panel */
+  --panel-2:#191921;     /* panel, one step up */
+  --hair:#26262F;        /* hairline */
+  --hair-2:#33333E;      /* hairline, hover */
+  --paper:#F4F4F7;       /* text */
+  --text-2:#C7C7D2;      /* long-form body */
+  --muted:#9A9AA8;       /* secondary */
+  --faint:#7E7E8A;       /* tertiary — lifted to clear 4.5:1 on the ground */
+  --bolt:#F1304A;
+  --bolt-deep:#8A0016;
+  --bolt-soft:#FF5165;
+
+  /* type — one family, in the app's own face. Avenir Next registers Medium 500,
+     Demi Bold 600, Bold 700, Heavy 800, so the weight tokens map 1:1. Mulish is
+     the non-Apple fallback: same geometric-humanist skeleton, flat terminals,
+     comparable x-height, variable 200-1000 so all four weights exist.
+     NOTE: never name a single-weight file (e.g."AvenirNextLTPro-Bold") in this
+     stack — where installed it captures the family and every weight collapses
+     onto that one master, with the heavier tokens synthesised on top of it. */
+  --display:"Avenir Next",Avenir,"Mulish",-apple-system,"Helvetica Neue",sans-serif;
+  --body:"Avenir Next",Avenir,"Mulish",-apple-system,"Helvetica Neue",Arial,sans-serif;
+  --w-med:500; --w-demi:600; --w-bold:700; --w-heavy:800;
+
+  /* Type scale — 10 roles, each with one job, all in rem so they answer the
+     reader's own font-size setting (the previous px values did not). Display
+     roles are rem+vw rather than pure vw, so browser zoom enlarges them with
+     the prose instead of collapsing the hierarchy. */
+  --t-micro:.72rem;                              /* uppercase micro-label      */
+  --t-meta:.8125rem;                             /* metadata, pills, captions  */
+  --t-ui:.9rem;                                  /* nav, footer, index, labels */
+  --t-dense:.96rem;                              /* table cells                */
+  --t-body:1.0625rem;                            /* all prose                  */
+  --t-lead:clamp(1.14rem,1.02rem + .55vw,1.22rem);   /* lede / deck            */
+  --t-brand:1.35rem;                             /* wordmark                   */
+  --t-h3:clamp(1.28rem,1.16rem + .5vw,1.6rem);   /* sub-head / policy section  */
+  --t-h2:clamp(1.7rem,1.45rem + 1.5vw,2.5rem);   /* section heading            */
+  --t-h1:clamp(2.2rem,1.9rem + 2.2vw,3.6rem);    /* display                    */
+
+  /* geometry — FeedCellMetrics.overlap (0.3) expressed as a page-scale diagonal */
+  --cut:clamp(34px,6vw,94px);
+  --maxw:1120px;
+  --gut:clamp(20px,4vw,32px);
+  --pw:clamp(216px,25vw,296px);
+  --pv-h:0px;
+  --ease:cubic-bezier(.16,.84,.32,1);
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;overflow-x:clip;background:var(--ink);color-scheme:dark}
+body{
+  margin:0;background:var(--ink);color:var(--paper);
+  font-family:var(--body);font-weight:var(--w-med);font-size:var(--t-body);line-height:1.65;
+  letter-spacing:.006em;
+  overflow-x:clip;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
+  font-kerning:normal;text-rendering:optimizeLegibility;
+}
+img{max-width:100%;display:block}
+a{color:var(--bolt-soft);text-decoration:none}
+a:hover{color:#FF7482;text-decoration:underline;text-underline-offset:3px}
+:focus-visible{outline:2px solid var(--bolt-soft);outline-offset:3px;border-radius:5px}
+::selection{background:var(--bolt-deep);color:#fff}
+[hidden]{display:none!important}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--gut)}
+.sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.skip{position:absolute;left:12px;top:-60px;z-index:90;background:var(--paper);color:var(--ink);
+  font-weight:var(--w-demi);font-size:var(--t-ui);padding:10px 16px;border-radius:9px;transition:top .18s var(--ease)}
+.skip:focus{top:calc(var(--pv-h) + 10px);text-decoration:none;color:var(--ink)}
+
+/* ═══════════════ preview chrome — NOT part of the shipped site ═══════════════ */
+
+/* ═══════════════════════ the bolt ═══════════════════════ */
+.bolt-mark{display:block}
+.bolt-huge{position:absolute;pointer-events:none;z-index:0;opacity:.5;
+  -webkit-mask-image:radial-gradient(76% 74% at 50% 46%,#000 12%,rgba(0,0,0,.62) 46%,rgba(0,0,0,.22) 72%,transparent 94%);
+  mask-image:radial-gradient(76% 74% at 50% 46%,#000 12%,rgba(0,0,0,.62) 46%,rgba(0,0,0,.22) 72%,transparent 94%)}
+
+/* ═══════════════════════ site nav ═══════════════════════ */
+.nav{display:flex;align-items:center;gap:14px;padding:22px 0 2px;position:relative;z-index:5}
+.brand{display:inline-flex;align-items:center;gap:11px;color:var(--paper);
+  font-family:var(--display);font-weight:var(--w-heavy);font-size:var(--t-brand);letter-spacing:-.012em}
+.brand:hover{text-decoration:none;color:var(--paper)}
+.brand .bolt-mark{filter:drop-shadow(0 3px 10px rgba(241,48,74,.45))}
+.nav-links{margin-left:auto;display:flex;gap:clamp(14px,2.6vw,26px);font-size:var(--t-ui);font-weight:var(--w-demi)}
+.nav-links a{color:var(--muted)}
+.nav-links a:hover{color:var(--paper);text-decoration:none}
+
+/* ═══════════════════════ buttons ═══════════════════════ */
+.cta-row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  font-family:var(--display);font-weight:var(--w-demi);font-size:1rem;letter-spacing:-.004em;
+  padding:14px 24px;border-radius:13px;border:1px solid transparent;position:relative;
+  transition:transform .2s var(--ease),background .2s,border-color .2s,box-shadow .3s var(--ease),color .2s}
+.btn:hover{text-decoration:none;transform:translateY(-2px)}
+.btn:active{transform:translateY(0)}
+.btn-primary{background:var(--paper);color:#0A0A0E;
+  box-shadow:0 12px 26px -16px rgba(0,0,0,.9),0 0 0 0 rgba(241,48,74,0)}
+.btn-primary:hover{background:#fff;color:#0A0A0E;
+  box-shadow:0 16px 34px -16px rgba(0,0,0,.95),0 10px 40px -12px rgba(241,48,74,.55)}
+.btn-primary svg{margin-top:-2px}
+.btn-ghost{border-color:var(--hair-2);color:var(--paper);background:rgba(255,255,255,.02)}
+.btn-ghost:hover{color:var(--paper);background:rgba(255,255,255,.055);border-color:#4A4A58}
+.trust{font-size:var(--t-meta);color:var(--muted);margin:18px 0 0;font-weight:var(--w-demi);
+  letter-spacing:.01em}
+.trust b{color:var(--paper);font-weight:var(--w-bold)}
+
+/* ═══════════════════════ pills ═══════════════════════ */
+.pills{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 24px;padding:0;list-style:none}
+.pill{display:inline-flex;align-items:center;gap:7px;font-size:var(--t-meta);font-weight:var(--w-demi);
+  letter-spacing:.02em;color:var(--muted);background:rgba(255,255,255,.035);
+  border:1px solid var(--hair);border-radius:999px;padding:6px 13px}
+.pill i{width:5px;height:5px;border-radius:50%;background:var(--bolt);display:block;
+  box-shadow:0 0 8px rgba(241,48,74,.8)}
+/* One dot per medium. Movies keeps the brand crimson; the other three borrow the
+   app's own laurel score colours (amber, green) plus a bright azure, so the row
+   reads as four distinct media rather than four copies of the logo. */
+.pills .pill:nth-child(2) i{background:#FFC24B;box-shadow:0 0 9px rgba(255,194,75,.85)}
+.pills .pill:nth-child(3) i{background:#3DDC84;box-shadow:0 0 9px rgba(61,220,132,.85)}
+.pills .pill:nth-child(4) i{background:#4FA8FF;box-shadow:0 0 9px rgba(79,168,255,.85)}
+
+/* ═══════════════════════ the ribbon: interlocking cells ═══════════════════════
+   Straight from HypeCell.path(in:) — one edge runs the full height, the opposite
+   edge is inset top and bottom by the overlap, so consecutive bands tile along a
+   single diagonal seam with no gap and no overlap.                              */
+.band{position:relative;width:100%;isolation:isolate}
+.band > .wrap{position:relative;z-index:2}
+.band--hero{background:var(--band);
+  clip-path:polygon(0 0,100% 0,100% calc(100% - var(--cut)),0 100%);
+  padding-block:6px calc(var(--cut) * .55 + clamp(44px,5vw,74px))}
+/* tall edge on the RIGHT — content sits right */
+.band--a{background:var(--band);margin-top:calc(var(--cut) * -1);
+  clip-path:polygon(0 var(--cut),100% 0,100% 100%,0 calc(100% - var(--cut)));
+  padding-block:calc(var(--cut) * .5 + clamp(40px,4.4vw,68px))}
+/* tall edge on the LEFT — content sits left */
+.band--b{background:var(--ink);margin-top:calc(var(--cut) * -1);
+  clip-path:polygon(0 0,100% var(--cut),100% calc(100% - var(--cut)),0 100%);
+  padding-block:calc(var(--cut) * .5 + clamp(40px,4.4vw,68px))}
+.band--close{background:var(--band);margin-top:calc(var(--cut) * -1);
+  clip-path:polygon(0 0,100% var(--cut),100% 100%,0 100%);
+  padding-block:calc(var(--cut) * .6 + clamp(52px,5.6vw,86px)) clamp(52px,6vw,88px)}
+
+/* the crimson rake that travels each seam */
+.seam{position:absolute;left:0;right:0;bottom:0;height:var(--cut);z-index:3;pointer-events:none;
+  background:linear-gradient(90deg,rgba(241,48,74,0) 0%,rgba(241,48,74,.55) 26%,var(--bolt-soft) 50%,rgba(241,48,74,.55) 74%,rgba(241,48,74,0) 100%);
+  background-size:230% 100%;background-position:50% 0;opacity:.55}
+.band--hero .seam,.band--b .seam{clip-path:polygon(100% -3px,0 calc(100% - 3px),0 100%,100% 0)}
+.band--a .seam{clip-path:polygon(0 -3px,100% calc(100% - 3px),100% 100%,0 0)}
+.band--close .seam{display:none}
+
+/* atmospheric wash — varies band to band so the scroll has a pulse */
+.wash{position:absolute;inset:0;z-index:0;pointer-events:none}
+.wash--hero{background:
+  radial-gradient(58% 62% at 78% 22%,rgba(138,0,22,.42),transparent 66%),
+  radial-gradient(46% 46% at 96% 58%,rgba(241,48,74,.18),transparent 70%),
+  radial-gradient(80% 60% at 8% 96%,rgba(255,255,255,.035),transparent 72%)}
+.wash--r{background:radial-gradient(52% 62% at 88% 34%,rgba(138,0,22,.26),transparent 70%)}
+.wash--l{background:radial-gradient(52% 62% at 12% 34%,rgba(138,0,22,.2),transparent 70%)}
+.wash--r-lo{background:radial-gradient(48% 58% at 90% 40%,rgba(138,0,22,.13),transparent 72%)}
+.wash--l-lo{background:radial-gradient(48% 58% at 10% 40%,rgba(138,0,22,.11),transparent 72%)}
+.wash--close{background:
+  radial-gradient(62% 70% at 50% 118%,rgba(138,0,22,.38),transparent 68%),
+  radial-gradient(40% 50% at 50% -10%,rgba(255,255,255,.04),transparent 70%)}
+
+/* ═══════════════════════ hero ═══════════════════════ */
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.06fr) minmax(0,.94fr);
+  gap:clamp(28px,5vw,56px);align-items:center;padding-top:clamp(20px,2.6vw,30px)}
+h1{font-family:var(--display);font-weight:var(--w-bold);
+  font-size:var(--t-h1);line-height:.98;letter-spacing:-.022em;
+  margin:0 0 17px;text-wrap:balance}
+h1 .q{color:var(--paper);font-weight:var(--w-demi);letter-spacing:-.02em;
+  text-wrap:pretty}
+h1 .a{color:var(--paper)}
+.lede{font-size:var(--t-lead);line-height:1.5;color:var(--text-2);
+  max-width:46ch;margin:0 0 24px;font-weight:var(--w-med);letter-spacing:.004em}
+.hero-art{position:relative;justify-self:stretch;display:flex;justify-content:center;min-width:0;
+  perspective:900px;perspective-origin:34% 40%}
+/* Hero phone turned a few degrees so its face angles back toward the headline, with a
+   slight clockwise tilt. A negative rotateY brings the right edge forward and sends the left
+   edge back, so the screen face turns left, toward the copy; the positive rotateX
+   then tips the top away, putting the top-left corner furthest from the viewer. Perspective sits on the parent
+   so this reads as depth rather than a flat skew. */
+.hero-art .device{transform:rotateX(12deg) rotateY(-18deg) rotateZ(2.2deg);transform-origin:50% 50%;
+  will-change:transform}
+.hero-art .bolt-huge{top:52%;left:36%;translate:-50% -50%;
+  width:auto;height:min(118%,540px);opacity:.92;
+  filter:drop-shadow(0 0 80px rgba(241,48,74,.5))}
+
+/* ═══════════════════════ device ═══════════════════════ */
+.device{position:relative;width:var(--pw);flex:0 0 auto;
+  border-radius:calc(var(--pw) * .148);padding:calc(var(--pw) * .0265);
+  background:linear-gradient(152deg,#4A4A57 0%,#191921 26%,#0C0C11 58%,#23232C 82%,#4A4A57 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.14),
+    inset 0 -1px 0 rgba(255,255,255,.06),
+    0 3px 8px -4px rgba(0,0,0,.9),
+    0 54px 96px -40px rgba(0,0,0,.95),
+    0 26px 60px -34px rgba(138,0,22,.5)}
+.device img{width:100%;height:auto;max-width:100%;display:block;opacity:1;visibility:visible;
+  border-radius:calc(var(--pw) * .122);background:#0B0B0F}
+.device::after{content:"";position:absolute;inset:calc(var(--pw) * .0265);
+  border-radius:calc(var(--pw) * .122);pointer-events:none;
+  background:linear-gradient(148deg,rgba(255,255,255,.11) 0%,rgba(255,255,255,.02) 22%,rgba(255,255,255,0) 46%);
+  mix-blend-mode:screen}
+.device::before{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.07)}
+
+
+/* ═══════════════════════ chapters (sticky scroll-spy) ═══════════════════════ */
+.chapters{position:sticky;top:var(--pv-h);z-index:40;
+  background:rgba(8,8,11,.94);-webkit-backdrop-filter:blur(14px) saturate(1.3);
+  backdrop-filter:blur(14px) saturate(1.3);
+  border-top:1px solid var(--hair);border-bottom:1px solid var(--hair)}
+.chapters ol{display:flex;gap:0;list-style:none;margin:0;padding:0;overflow-x:auto;
+  scrollbar-width:none;-ms-overflow-style:none}
+.chapters ol::-webkit-scrollbar{display:none}
+.chapters li{flex:1 0 auto}
+.chapters a{display:flex;align-items:center;gap:9px;white-space:nowrap;
+  padding:13px clamp(12px,1.8vw,20px);font-size:var(--t-meta);font-weight:var(--w-demi);
+  color:var(--faint);border-right:1px solid var(--hair);transition:color .22s var(--ease)}
+.chapters li:last-child a{border-right:0}
+.chapters a:hover{color:var(--paper);text-decoration:none}
+.chapters a::before{content:"";width:6px;height:6px;border-radius:50%;flex:0 0 auto;
+  background:var(--hair-2);transition:background .3s var(--ease),box-shadow .3s var(--ease),transform .3s var(--ease)}
+.chapters a[aria-current="true"]{color:var(--paper)}
+.chapters a[aria-current="true"]::before{background:var(--bolt);transform:scale(1.25);
+  box-shadow:0 0 12px rgba(241,48,74,.9)}
+
+/* ═══════════════════════ feature bands ═══════════════════════ */
+.feat{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+  gap:clamp(30px,4.6vw,58px);align-items:center;scroll-margin-top:calc(var(--pv-h) + 76px);
+  --pw:clamp(202px,21vw,266px)}
+.band--b .feat{--pw:clamp(190px,19.5vw,246px)}
+.feat .copy{max-width:52ch}
+.feat p{max-width:44ch}
+.band--a .feat .copy{order:2;justify-self:end}
+.band--a .feat .shot{order:1}
+h2{font-family:var(--display);font-weight:var(--w-demi);
+  font-size:var(--t-h2);line-height:1.04;letter-spacing:-.016em;
+  margin:0 0 17px;text-wrap:balance;color:var(--paper)}
+.feat p{color:var(--text-2);margin:0;font-size:var(--t-body);line-height:1.62}
+.feat p + p{margin-top:14px}
+.feat .shot{display:flex;min-width:0;justify-self:stretch;justify-content:center}
+.notes{display:flex;flex-wrap:wrap;gap:8px 18px;margin:22px 0 0;padding:0;list-style:none}
+.notes li{display:inline-flex;align-items:center;gap:8px;font-size:var(--t-meta);color:var(--muted);
+  font-weight:var(--w-demi);letter-spacing:.01em}
+:root{--bolt-glyph:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 17 26'%3E%3Cpath d='M9.4 0 1.4 14.6h6.2L5.1 26 15.6 10.4H9.1z' fill='%23000'/%3E%3C/svg%3E")}
+/* Each point is marked with the HYPE bolt rather than a dash, tinted per section
+   from the same four-colour set as the media pills in the hero. Five sections,
+   four colours — the set cycles, so the last section returns to the crimson. */
+.notes li::before{content:"";width:9px;height:14px;flex:0 0 auto;
+  background:var(--note-c,var(--bolt));
+  -webkit-mask:var(--bolt-glyph) center/contain no-repeat;
+          mask:var(--bolt-glyph) center/contain no-repeat;
+  filter:drop-shadow(0 0 5px var(--note-c,var(--bolt)))}
+#f-feed   .notes{--note-c:#F1304A}
+#f-scores .notes{--note-c:#FFC24B}
+#f-where  .notes{--note-c:#3DDC84}
+#f-gist   .notes{--note-c:#4FA8FF}
+#f-alerts .notes{--note-c:#F1304A}
+
+/* ═══════════════════════ close / support ═══════════════════════ */
+.close{text-align:center;position:relative;z-index:2}
+.close h2{font-size:clamp(1.95rem,1.6rem + 1.9vw,2.95rem);margin-bottom:15px;max-width:16ch;
+  margin-inline:auto;line-height:1.02}
+.close p{color:var(--text-2);max-width:52ch;margin:0 auto 30px;font-size:var(--t-body)}
+.close .cta-row{justify-content:center}
+.close .bolt-huge{top:58%;left:50%;translate:-50% -50%;width:auto;height:min(170%,460px);opacity:.09}
+
+/* ═══════════════════════ footer ═══════════════════════ */
+footer{border-top:1px solid var(--hair);padding:30px 0 56px;color:var(--muted);font-size:var(--t-ui);
+  background:var(--ink);position:relative;z-index:2}
+.fgrid{display:flex;gap:18px 26px;flex-wrap:wrap;align-items:center}
+.fgrid .r{margin-left:auto;display:flex;gap:22px;flex-wrap:wrap}
+footer a{color:var(--muted);font-weight:var(--w-demi)}
+footer a:hover{color:var(--paper)}
+
+/* ═══════════════════════ privacy document ═══════════════════════ */
+.doc-head{padding:clamp(24px,4vw,44px) 0 clamp(30px,4vw,46px)}
+.doc-head .wrap{position:relative}
+.doc-head .wrap::after{content:"";position:absolute;left:var(--gut);right:var(--gut);
+  bottom:calc(clamp(30px,4vw,46px) * -1);height:1px;
+  background:linear-gradient(90deg,var(--bolt),rgba(241,48,74,.12) 42%,transparent 78%)}
+.doc-head h1{font-size:clamp(2rem,1.75rem + 1.6vw,3.05rem);line-height:1.02;margin:0 0 12px;max-width:14ch}
+.updated{color:var(--muted);font-size:var(--t-meta);margin:0;letter-spacing:.03em;font-weight:var(--w-demi)}
+.doc-layout{display:block;padding:34px 0 76px}
+.doc{max-width:60ch}
+.toc{display:none}
+@media (min-width:1040px){
+  .doc-layout{display:grid;grid-template-columns:minmax(0,68ch) minmax(190px,1fr);
+    gap:clamp(40px,6vw,84px);align-items:start}
+  .toc{display:block;position:sticky;top:calc(var(--pv-h) + 30px)}
+}
+.toc-hd{font-family:var(--display);font-weight:var(--w-bold);font-size:var(--t-micro);
+  letter-spacing:.14em;text-transform:uppercase;color:var(--faint);margin:0 0 12px}
+.toc ol{list-style:none;margin:0;padding:0;border-left:1px solid var(--hair)}
+.toc li{margin:0}
+.toc a{display:block;padding:7px 0 7px 15px;margin-left:-1px;font-size:var(--t-ui);
+  font-weight:var(--w-demi);color:var(--muted);border-left:1px solid transparent;
+  transition:color .2s var(--ease),border-color .2s var(--ease)}
+.toc a:hover{color:var(--paper);text-decoration:none;border-left-color:var(--hair-2)}
+.toc a[aria-current="true"]{color:var(--paper);border-left-color:var(--bolt)}
+.doc > p,.doc li{color:var(--text-2)}
+.doc > p{margin:0 0 18px;font-size:var(--t-body)}
+.doc h2{font-family:var(--display);font-weight:var(--w-demi);font-size:var(--t-h3);
+  letter-spacing:-.01em;line-height:1.22;margin:52px 0 14px;color:var(--paper);
+  display:flex;align-items:baseline;gap:12px;scroll-margin-top:calc(var(--pv-h) + 26px)}
+.doc h2::before{content:"";width:16px;height:2px;background:var(--bolt);flex:0 0 auto;
+  translate:0 -.35em;box-shadow:0 0 10px rgba(241,48,74,.6)}
+.doc ul{padding:0;margin:14px 0 18px;list-style:none}
+.doc ul li{position:relative;padding-left:22px;margin:14px 0}
+.doc ul li::before{content:"";position:absolute;left:2px;top:.72em;width:7px;height:1px;background:var(--faint)}
+.doc strong{color:var(--paper);font-weight:var(--w-demi)}
+.short{position:relative;background:var(--panel);border:1px solid var(--hair);border-radius:14px;
+  padding:22px 24px 22px 24px;margin:26px 0 34px;overflow:hidden}
+.short::before{content:"";position:absolute;inset:0 0 auto 0;height:1px;
+  background:linear-gradient(90deg,var(--bolt),rgba(241,48,74,.15) 55%,transparent)}
+.short::after{content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(58% 90% at 3% 0%,rgba(138,0,22,.28),transparent 70%)}
+.short-hd{display:flex;align-items:center;gap:9px;font-family:var(--display);
+  font-weight:var(--w-bold);font-size:var(--t-ui);letter-spacing:.02em;color:var(--paper);
+  margin:0 0 8px;position:relative;z-index:1}
+.short p{margin:0;color:var(--text-2);position:relative;z-index:1;font-size:var(--t-body)}
+.tbl{border:1px solid var(--hair);border-radius:14px;overflow:hidden;margin:20px 0 26px;background:var(--panel)}
+table{border-collapse:collapse;width:100%;font-size:var(--t-dense)}
+caption{text-align:left;font-size:var(--t-meta);color:var(--muted);padding:0 0 9px;font-weight:var(--w-demi)}
+th,td{text-align:left;padding:14px 18px;border-bottom:1px solid var(--hair);vertical-align:top}
+thead th{background:var(--panel-2);font-family:var(--display);font-weight:var(--w-demi);font-size:var(--t-meta);
+  letter-spacing:.07em;text-transform:uppercase;color:var(--muted)}
+tbody th{font-weight:var(--w-demi);color:var(--paper);width:38%}
+td{color:var(--text-2)}
+tbody tr:last-child th,tbody tr:last-child td{border-bottom:0}
+
+/* ═══════════════════════ responsive ═══════════════════════ */
+@media (max-width:900px){
+  :root{--pw:min(62vw,292px)}
+  .hero-grid{grid-template-columns:1fr;gap:34px;padding-top:24px;
+    max-width:620px;margin-inline:auto}
+  .hero-art{justify-self:stretch;justify-content:center;margin-right:0;perspective:800px}
+  .hero-art .device{transform:rotateX(7deg) rotateY(-10deg) rotateZ(1.2deg)}
+  .hero-art .bolt-huge{top:50%;left:30%;width:auto;height:min(104%,390px);opacity:.6;
+    filter:drop-shadow(0 0 60px rgba(241,48,74,.4))}
+  .feat,.band--b .feat{grid-template-columns:1fr;gap:30px;
+    max-width:620px;margin-inline:auto;--pw:min(62vw,292px)}
+  .band .feat .copy{order:0;justify-self:start;max-width:none}
+  .band .feat .shot{order:0;justify-self:stretch;justify-content:center;width:100%}
+  h1{max-width:none}
+}
+@media (max-width:640px){
+  .nav{padding-top:20px}
+  .nav-links{gap:14px}
+  .btn{width:100%;flex:1 1 100%}
+  .cta-row{gap:10px}
+  .pills{gap:6px}
+  .pill{padding:5px 9px;gap:6px}
+  /* the horizontal chapter strip has no scrollbar — show that it continues */
+  .chapters{-webkit-mask-image:linear-gradient(90deg,#000 calc(100% - 26px),transparent);
+    mask-image:linear-gradient(90deg,#000 calc(100% - 26px),transparent)}
+  .close h2{max-width:none}
+  /* the wide"what we collect" table becomes stacked records */
+  .tbl{border-radius:12px}
+  table,tbody,tbody tr,tbody th,tbody td{display:block;width:auto}
+  thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+  tbody tr{border-bottom:1px solid var(--hair);padding:4px 0}
+  tbody tr:last-child{border-bottom:0}
+  tbody th{width:auto;border-bottom:0;padding-bottom:4px}
+  tbody td{border-bottom:0;padding-top:0}
+  tbody td::before{content:"Why we need it";display:block;margin-bottom:3px;
+    font-size:var(--t-micro);letter-spacing:.1em;text-transform:uppercase;
+    color:var(--muted);font-weight:var(--w-bold)}
+}
+
+/* ═══════════════════════ motion ═══════════════════════
+   Everything is visible by default. JS opts in to the pre-state only when it
+   can also run the reveal, so a failed script never hides content.        */
+/* CONTENT IS NEVER ANIMATED, and never carries an opacity or transform state.
+   An entrance that starts from opacity:0 — whether as a transition off a hidden
+   class or as a keyframe — is only as reliable as the animation clock. A host
+   that re-serialises the DOM, a paused or throttled document, or a compositor
+   that never starts the animation all leave the element parked on that first
+   keyframe, i.e. invisible. Measured: with a stalled clock a `from{opacity:0}`
+   keyframe held content at opacity 0 indefinitely, fill-mode:none notwithstanding.
+   So the one authored moment lives entirely on the .seam, which is decorative by
+   construction: if it never plays, the seam simply sits at its resting lit
+   position and not one word or image is affected. */
+@keyframes rake{from{background-position:135% 0} to{background-position:50% 0}}
+.band.in .seam{animation:rake 1.15s var(--ease)}
+
+@media (max-width:400px){
+  .btn{padding:13px 14px;gap:8px;font-size:var(--t-ui);letter-spacing:0}
+  .trust{letter-spacing:.014em}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .band.in .seam{animation:none!important}
+  .btn:hover{transform:none}
+}
+</style>
+</head>
+<body>
+<main id="page-priv">
+<div class="wrap">
+  <nav class="nav" aria-label="Primary">
+    <a class="brand" href="index.html">
+      <svg class="bolt-mark" width="18" height="27" viewBox="0 0 17 26" aria-hidden="true" focusable="false"><defs><linearGradient id="bg2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FF5165"/><stop offset="1" stop-color="#C11033"/></linearGradient></defs><path d="M9.4 0 1.4 14.6h6.2L5.1 26 15.6 10.4H9.1z" fill="url(#bg2)"/></svg>HYPE</a>
+    <span class="nav-links"><a href="index.html">← Back to HYPE</a></span>
+  </nav>
+</div>
+
+<header class="doc-head"><div class="wrap">
+  <h1>Privacy policy</h1>
+  <p class="updated">Last updated 30 August 2026</p>
+</div></header>
+
+<div class="wrap"><div class="doc-layout"><article class="doc">
+  <p>HYPE is an iOS app that tracks upcoming and newly released movies, TV shows, music and
+    games. It is built and run by Daniel Fisher. This page explains exactly what the app
+    collects, why, and how to get rid of it.</p>
+
+  <aside class="short">
+    <p class="short-hd"><svg width="11" height="17" viewBox="0 0 17 26" aria-hidden="true" focusable="false"><path d="M9.4 0 1.4 14.6h6.2L5.1 26 15.6 10.4H9.1z" fill="#F1304A"/></svg>The short version</p>
+    <p>HYPE collects your name and email from Sign in with Apple, the titles you favourite, and a
+      notification token if you turn alerts on. That is all. There are no ads, no analytics, no
+      tracking across other apps or websites, and nothing is ever sold.</p>
+  </aside>
+
+  <h2 id="p-collect">What we collect</h2>
+  <div class="tbl"><table>
+    <caption class="sr">What HYPE collects and why</caption>
+    <thead><tr><th scope="col">What</th><th scope="col">Why we need it</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">Your name and email address</th><td>Supplied by Sign in with Apple when you create an account, so we can identify you. If you use Apple's Hide My Email, we only ever see the relay address.</td></tr>
+      <tr><th scope="row">An account ID</th><td>Links your account to your own list.</td></tr>
+      <tr><th scope="row">Titles you favourite, and your feed preferences</th><td>So your list syncs across your devices and the feed shows the media you care about.</td></tr>
+      <tr><th scope="row">A notification token</th><td>Only if you allow notifications. It lets us send the release-day alert for the titles you follow.</td></tr>
+    </tbody>
+  </table></div>
+
+  <h2 id="p-not">What we do not collect</h2>
+  <ul>
+    <li>No analytics or usage tracking. The app ships without any analytics or crash-reporting service.</li>
+    <li>No advertising identifiers, and no tracking of you across other apps or websites.</li>
+    <li>No location, contacts, photos, calendar or health data.</li>
+    <li>No payment details. HYPE is free and has no purchases.</li>
+  </ul>
+
+  <h2 id="p-use">How we use it</h2>
+  <p>Only to run the app: to sign you in, to keep your favourites in step across your devices,
+    to send the alerts you asked for, and to show the media types you have chosen. We do not
+    sell your information, we do not share it for advertising, and we do not build a profile
+    of you.</p>
+
+  <h2 id="p-stored">Where your data is stored</h2>
+  <p>Your account and favourites are stored on Google Firebase (Authentication, Realtime
+    Database, Cloud Storage and Cloud Messaging), which processes the data on our behalf under
+    Google's terms. Nobody else has access.</p>
+
+  <h2 id="p-titles">Where the titles come from</h2>
+  <p>Release dates, artwork, scores and store links are fetched from third-party sources —
+    including TMDB, IGDB, AlbumOfTheYear, SteamGridDB, Apple, Spotify and YouTube. These are
+    lookups about films, shows, albums and games. <strong>Your personal information is never
+    sent to them.</strong></p>
+
+  <h2 id="p-delete">Deleting your account</h2>
+  <p>You can delete your account at any time from inside the app: open your profile and choose
+    <strong>Delete account</strong>. This removes your account, your favourites and your
+    notification token. If you would rather we did it for you, email
+    <a href="mailto:hypeappfeedback@gmail.com?subject=Delete%20my%20HYPE%20account">hypeappfeedback@gmail.com</a>
+    and we will action it.</p>
+
+  <h2 id="p-retain">How long we keep it</h2>
+  <p>We keep your data for as long as your account exists. Delete the account and it goes.
+    Backups holding the data are rotated out within 30 days.</p>
+
+  <h2 id="p-children">Children</h2>
+  <p>HYPE is not aimed at children under 13, and we do not knowingly collect their information.
+    If you believe a child has given us their details, email us and we will delete them.</p>
+
+  <h2 id="p-rights">Your rights</h2>
+  <p>You can ask us what we hold about you, ask for a copy, ask us to correct it, or ask us to
+    erase it. Email <a href="mailto:hypeappfeedback@gmail.com?subject=Privacy%20request">hypeappfeedback@gmail.com</a>
+    and we will respond within 30 days.</p>
+
+  <h2 id="p-changes">Changes to this policy</h2>
+  <p>If this policy changes in a way that matters, we will update this page and change the date
+    at the top. Significant changes will also be flagged in the app.</p>
+
+  <h2 id="p-contact">Contact</h2>
+  <p>Questions about privacy, or anything else:
+    <a href="mailto:hypeappfeedback@gmail.com?subject=HYPE%20privacy">hypeappfeedback@gmail.com</a></p>
+</article>
+
+  <aside class="toc" aria-label="On this page">
+    <p class="toc-hd">On this page</p>
+    <ol>
+        <li><a href="#p-collect">What we collect</a></li>
+        <li><a href="#p-not">What we do not collect</a></li>
+        <li><a href="#p-use">How we use it</a></li>
+        <li><a href="#p-stored">Where your data is stored</a></li>
+        <li><a href="#p-titles">Where the titles come from</a></li>
+        <li><a href="#p-delete">Deleting your account</a></li>
+        <li><a href="#p-retain">How long we keep it</a></li>
+        <li><a href="#p-children">Children</a></li>
+        <li><a href="#p-rights">Your rights</a></li>
+        <li><a href="#p-changes">Changes to this policy</a></li>
+        <li><a href="#p-contact">Contact</a></li>
+    </ol>
+  </aside>
+</div></div>
+
+<footer><div class="wrap"><div class="fgrid">
+  <span>© 2026 Daniel Fisher</span>
+  <span class="r">
+    <a href="index.html">Home</a>
+    <a href="mailto:hypeappfeedback@gmail.com?subject=HYPE%20support">Contact</a>
+    <a href="https://apps.apple.com/au/app/hype/id1227619434">App Store</a>
+  </span>
+</div></div></footer>
+</main>
+<script>
+/* preview switcher — unchanged behaviour */
+
+(function(){
+  var root = document.documentElement;
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* keep the chapter bar clear of the preview chrome (0 on the shipped page) */
+  function syncChrome(){
+    var pv = document.querySelector('.pv');
+    root.style.setProperty('--pv-h', (pv ? pv.offsetHeight : 0) + 'px');
+  }
+  syncChrome();
+  window.addEventListener('resize', syncChrome, {passive:true});
+  window.addEventListener('load', syncChrome);
+  if(document.fonts && document.fonts.ready) document.fonts.ready.then(syncChrome);
+
+  if(!('IntersectionObserver' in window)) return;
+
+  /* the one authored moment: the crimson rake runs each seam as it enters view */
+  var reveal = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(!e.isIntersecting) return;
+      e.target.classList.add('in');
+      reveal.unobserve(e.target);
+    });
+  }, {rootMargin:'0px 0px 0px 0px', threshold:0.05});
+  document.querySelectorAll('.band').forEach(function(el){ reveal.observe(el); });
+
+  /* scroll-spy — drives both the home chapter bar and the policy index.
+     Driven by a rAF-coalesced scroll listener rather than the observer's own
+     callbacks: several targets can cross in one tick, and only a position
+     comparison can say which one the reader is actually on. */
+  var spies = [];
+  function spyOn(sel, lineFraction){
+    var links = Array.prototype.slice.call(document.querySelectorAll(sel));
+    var targets = links.map(function(a){ return document.querySelector(a.getAttribute('href')); })
+                       .filter(Boolean);
+    if(links.length !== targets.length || !targets.length) return;
+    spies.push(function(){
+      var line = window.innerHeight * lineFraction, best = 0;
+      targets.forEach(function(t, i){ if(t.getBoundingClientRect().top <= line) best = i; });
+      var winner = '#' + targets[best].id;
+      links.forEach(function(a){
+        var on = a.getAttribute('href') === winner;
+        if((a.getAttribute('aria-current') === 'true') === on) return;
+        a.setAttribute('aria-current', on ? 'true' : 'false');
+        if(!on) return;
+        var strip = a.closest('ol');
+        if(strip && strip.scrollWidth > strip.clientWidth){
+          strip.scrollTo({left: Math.max(0, a.offsetLeft - 16), behavior: reduce ? 'auto' : 'smooth'});
+        }
+      });
+    });
+  }
+  spyOn('.chapters a', 0.5);
+  spyOn('.toc a', 0.25);
+  if(spies.length){
+    var queued = false;
+    var run = function(){ queued = false; spies.forEach(function(f){ f(); }); };
+    var onScroll = function(){
+      if(queued) return;
+      queued = true;
+      requestAnimationFrame(run);
+    };
+    window.addEventListener('scroll', onScroll, {passive:true});
+    window.addEventListener('resize', onScroll, {passive:true});
+    run();
+  }
+})();
+</script>
+</body>
+</html>
